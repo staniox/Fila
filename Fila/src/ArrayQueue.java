@@ -1,31 +1,31 @@
 import java.util.Scanner;
 
 public class ArrayQueue implements Fila {
-	Scanner input =new Scanner(System.in);
+	
 		Integer[] pikachu =new Integer[50];
 		int f=0;
 		int r=0;
 		
-	public void enqueue() {
-		pikachu[r]=input.nextInt();
+	public void enqueue(int n) {
+		pikachu[r]=n;
 		r+=1;
 		
 	}
 
 	@Override
-	public void dequeue() {
-		f=front();
+	public int dequeue() {
+		f+=1;
+		return front();
 		
 	}
 
 	@Override
 	public int front () {
-		return ++f;
+		return pikachu[f];
 	}
 
 	@Override
 	public int size() {
-		
 		return r-f;
 	}
 
@@ -37,9 +37,29 @@ public class ArrayQueue implements Fila {
 		else
 		return false;
 	}
+	
+	
 	public static void main(String[] args) {
+		ArrayQueue pokemon = new ArrayQueue();
+		Scanner in =new Scanner(System.in);
+		int input=0;
+		
+		do {
+			input=in.nextInt();
+			pokemon.enqueue(input);
+		} while (input!=-1);
+		
+		int size = pokemon.size()/2;
+		
+		for (int i = 0; i <size; i++) {
+			pokemon.dequeue();
+		}
 		
 		
 	}
+
+	
+
+	
 
 }
